@@ -1,0 +1,17 @@
+{
+  "manifest_version": 2,
+
+  "name": "Chrome Env Monitor",
+  "description": "This extension display the environment and project name based in a meta tag at the page header.",
+  "version": "1.0",
+
+  "browser_action": {
+    "default_icon": "icon.png",
+    "default_popup": "popup.html",
+    "default_title": "Click here!"
+  },
+  "permissions": [
+    "activeTab",
+    "https://ajax.googleapis.com/"
+  ]
+}
