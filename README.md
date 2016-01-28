@@ -1,3 +1,5 @@
+![EnMo Logo](https://raw.githubusercontent.com/rafaelbiriba/enmo/master/images/logo.png)
+
 # Environment Monitor (EnMo)
 
 This extension display the environment and project name based in a meta tag at the page header.
