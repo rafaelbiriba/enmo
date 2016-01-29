@@ -1,8 +1,82 @@
 body {
-  background-color: #020507;
+  margin: 0;
+  padding: 0;
 }
 
 #enmo-popup {
-  width: 400px;
+  width: 250px;
   color: #fff;
+  padding: 15px 20px;
+}
+
+#enmo-popup .menu {
+  padding: 0;
+  list-style-type: none;
+  margin: 0;
+}
+
+#enmo-popup .menu li {
+  padding: 0 30px 5px;
+  display: inline-block;
+  border-bottom: none;
+  color: #A8A8A8;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+#enmo-popup .menu li.active {
+  border-bottom: 4px solid #071419;
+  color: #071419;
+}
+
+#enmo-popup hr {
+  border: 0;
+  height: 1px;
+  background-color: #A8A8A8;
+  margin: 0;
+  position: absolute;
+  top: 39px;
+  width: 100%;
+  left: 0;
+}
+
+#enmo-popup .info.content {
+  padding-top: 15px;
+}
+
+#enmo-popup .logo {
+  margin: 0 0 0 15px;
+  width: 50px;
+  height: 75px;
+  display: inline-block;
+}
+
+#enmo-popup .logo * {
+  fill: #002633;
+}
+
+#enmo-popup .enmo-data {
+  color: #002633;
+  padding: 0;
+  list-style-type: none;
+  margin: 0;
+  display: inline-block;
+  vertical-align: top;
+  padding: 10px 0 0 35px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#enmo-popup .enmo-data li {
+  padding-bottom: 10px;
+}
+
+#enmo-popup .enmo-data li:last-child {
+  padding-bottom: 0px;
+}
+
+#enmo-popup .enmo-data .key {
+  font-size: 14px;
+  font-weight: bold;
+  color: #002633;
 }

@@ -11,7 +11,11 @@
     "default_popup": "popup.html"
   },
 
-  "web_accessible_resources": ["images/logo-text.svg", "images/close-icon.svg"],
+  "web_accessible_resources": ["images/logo-text.svg", "images/close-icon.svg", "scripts/popup.js"],
+
+  "permissions": [
+    "storage"
+  ],
 
   "content_scripts": [
    {
@@ -24,6 +28,7 @@
  "background":
   {
     "scripts":["scripts/background.js"],
-    "css" : ["styles/popup.css"]
+    "css" : ["styles/popup.css"],
+    "persistent": true
   }
 }

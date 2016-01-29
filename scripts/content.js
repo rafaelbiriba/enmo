@@ -2,7 +2,7 @@
 var enmo_params = getEnMoParams();
 
 if (enMoActive()) {
-  chrome.runtime.sendMessage({enmo_active: true, enmo_params: enmo_params});
+  chrome.runtime.sendMessage({enmo_params: enmo_params, enmo_type: "setActive"});
   createEnMoDialog();
   startDraggabilly();
 }
@@ -32,7 +32,7 @@ function createEnMoDialog() {
   dialog.id = "enmo-dialog";
 
   // LOGO SVG
-  dialog.innerHTML += '<div class="logo"><svg version="1.1" id="enmo-logo-text" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="100%" height="100%" viewBox="0 0 19 18.963" enable-background="new 0 0 19 18.963" xml:space="preserve"><g><path d="M4.971,8.915H0V0h4.971v1.025H2.003v2.904h1.973v1.025H2.003v2.935h2.968V8.915z"/><path d="M11.013,8.915H9.009V3.991H8.047v4.923H6.044V2.966h3.975v1.025h0.994V8.915z"/><g><path d="M13.066,18.963h-2.005v-3.944H10.1v1.972H9.088v-1.972H8.127v3.944H6.122v-8.915h2.005v1.972h0.961v1.973 H10.1v-1.973h0.961v-1.972h2.005V18.963z"/><path d="M19,17.985h-0.981v0.978h-2.996v-0.978h-0.995v-3.992h0.995v-0.979h2.996v0.979H19V17.985z M16.993,17.938 V14.04h-0.96v3.897H16.993z"/></g></g></svg></div>';
+  dialog.innerHTML += '<div class="logo"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="100%" height="100%" viewBox="0 0 19 18.963" enable-background="new 0 0 19 18.963" xml:space="preserve"><g><path d="M4.971,8.915H0V0h4.971v1.025H2.003v2.904h1.973v1.025H2.003v2.935h2.968V8.915z"/><path d="M11.013,8.915H9.009V3.991H8.047v4.923H6.044V2.966h3.975v1.025h0.994V8.915z"/><g><path d="M13.066,18.963h-2.005v-3.944H10.1v1.972H9.088v-1.972H8.127v3.944H6.122v-8.915h2.005v1.972h0.961v1.973 H10.1v-1.973h0.961v-1.972h2.005V18.963z"/><path d="M19,17.985h-0.981v0.978h-2.996v-0.978h-0.995v-3.992h0.995v-0.979h2.996v0.979H19V17.985z M16.993,17.938 V14.04h-0.96v3.897H16.993z"/></g></g></svg></div>';
 
   dialog.innerHTML += "<a href='#' class='close-icon' onclick='" + closeEnMoDialog + "; closeEnMoDialog();'>&#215;</a>"
 
@@ -51,7 +51,6 @@ function createEnMoDialog() {
 
   document.body.appendChild(container);
 }
-
 
 function enMoActive() {
   return Object.keys(enmo_params).length > 0;
