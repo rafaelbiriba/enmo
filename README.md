@@ -6,13 +6,11 @@ EnMo (Environment Monitor) is a Chrome Extension (Firefox comming soon) that aut
 
 For example, with this extension, you will be able to see quickly what is the version of the project you are accessing.
 
-More documentation comming soon...
-
-## Work in Progress ##
+## Work in Progress Detailed ##
 Please, **STAR** and **WATCH** the project to get update about new progress and releases
 
-## For now, just for Globo.com tests ##
-Some strings and URLs are hardcoded for test and study purpose.
+Supporting “enmo:project”, “enmo:version” and any custom tag like “enmo:custom:env”
+
 
 ## Contributors
 
