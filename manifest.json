@@ -6,7 +6,9 @@
   "version": "0.1",
 
   "browser_action": {
-    "default_icon": "images/icon-inactive.png"
+    "default_icon": "images/icon-inactive.png",
+    "default_title": "Environment Monitor (EnMo)",
+    "default_popup": "popup.html"
   },
 
   "web_accessible_resources": ["images/icon-active.png"],
@@ -15,12 +17,13 @@
    {
      "matches": ["<all_urls>"],
      "js": ["scripts/content.js"],
-     "css" : ["styles/content.css"]
+     "css" : ["styles/dialog.css"]
    }
  ],
 
  "background":
   {
-    "scripts":["scripts/background.js"]
+    "scripts":["scripts/background.js"],
+    "css" : ["styles/popup.css"]
   }
 }
