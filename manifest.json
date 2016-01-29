@@ -11,7 +11,7 @@
 
   "content_scripts": [
    {
-     "matches": ["http://*.globo.com/*", "http://*.globoi.com/*"],
+     "matches": ["*://*/*"],
      "js":["scripts/content.js"]
    }
  ],
