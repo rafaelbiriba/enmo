@@ -1,11 +1,35 @@
 
 var enmo_params = getEnMoParams();
 
-if (enMoActive(enmo_params)) {
+if (enMoActive()) {
   chrome.runtime.sendMessage({enmo_active: true, enmo_params: enmo_params});
+  createEnMoDialog();
 }
 
-function enMoActive(enmo_params) {
+function createEnMoDialog() {
+  var dialog = document.createElement("div");
+  dialog.id = "enmo-dialog";
+
+  var imgUrl = chrome.extension.getURL("images/icon-active.png");
+  dialog.innerHTML += "<img src='" + imgUrl + "'>";
+
+  var content = document.createElement("ul");
+  content.className = "content";
+
+  for (var key in enmo_params) {
+    var info = document.createElement("li");
+    info.className = "info";
+    info.innerHTML += "<div class='key'>" + key + "</div>";
+    info.innerHTML += "<div class='value'>" + enmo_params[key] + "</div>";
+    content.appendChild(info);
+  };
+  dialog.appendChild(content);
+
+  document.body.appendChild(dialog);
+}
+
+
+function enMoActive() {
   return Object.keys(enmo_params).length > 0;
 }
 

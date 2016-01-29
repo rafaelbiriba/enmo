@@ -9,10 +9,13 @@
     "default_icon": "images/icon-inactive.png"
   },
 
+  "web_accessible_resources": ["images/icon-active.png"],
+
   "content_scripts": [
    {
-     "matches": ["*://*/*"],
-     "js":["scripts/content.js"]
+     "matches": ["<all_urls>"],
+     "js": ["scripts/content.js"],
+     "css" : ["styles/content.css"]
    }
  ],
 
