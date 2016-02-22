@@ -1,7 +1,7 @@
 
 var enmo_params = getEnMoParams();
 
-if (enMoActive()) {
+if (isEnMoActive()) {
   chrome.runtime.sendMessage({enmo_params: enmo_params, enmo_type: "setActive"});
   createEnMoDialog();
   startDraggabilly();
@@ -52,7 +52,7 @@ function createEnMoDialog() {
   document.body.appendChild(container);
 }
 
-function enMoActive() {
+function isEnMoActive() {
   return Object.keys(enmo_params).length > 0;
 }
 

@@ -3,15 +3,12 @@ var enmo_params = {};
 chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
     chrome.runtime.sendMessage({enmo_type: "getActive", tab_id: tabs[0].id}, function(params) {
       enmo_params = params;
-      createEnMoPopupData();
+      createInfoContent();
+      bindMenuLinks();
     });
 });
 
-function enMoActive() {
-  return Object.keys(enmo_params).length > 0;
-}
-
-function createEnMoPopupData() {
+function createInfoContent() {
   var enMoData = document.querySelector(".enmo-data");
   for (var key in enmo_params) {
     var info = document.createElement("li");
@@ -19,4 +16,34 @@ function createEnMoPopupData() {
     info.innerHTML += "<div class='value'>" + enmo_params[key] + "</div>";
     enMoData.appendChild(info);
   };
+}
+
+function bindMenuLinks() {
+  var menuItem = document.querySelectorAll('.menu li');
+  for (var i = 0; i < menuItem.length; i++) {
+    menuItem[i].addEventListener("click", enMoChangeActiveTab);
+  }
+}
+
+function enMoChangeActiveTab(event) {
+  var tab = event.target;
+  var tabMenu = tab.dataset.menu;
+  removeHighlightActiveTabs();
+  tab.className = "active"
+  hideAllContents();
+  document.querySelector("#enmo-popup .content [data-content='"+ tabMenu +"']").className = "";
+}
+
+function removeHighlightActiveTabs() {
+  var menuList = document.querySelectorAll("#enmo-popup .menu li");
+  for (var i = 0; i < menuList.length; i++) {
+    menuList[i].className = "";
+  }
+}
+
+function hideAllContents() {
+  var menuListContent = document.querySelectorAll("#enmo-popup .content [data-content]");
+  for (var i = 0; i < menuListContent.length; i++) {
+    menuListContent[i].className = "hide";
+  }
 }

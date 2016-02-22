@@ -15,6 +15,10 @@ body {
   margin: 0;
 }
 
+#enmo-popup .hide {
+  display: none;
+}
+
 #enmo-popup .menu li {
   padding: 0 30px 5px;
   display: inline-block;
@@ -41,22 +45,26 @@ body {
   left: 0;
 }
 
-#enmo-popup .info.content {
+#enmo-popup .content {
   padding-top: 15px;
 }
 
-#enmo-popup .logo {
+#enmo-popup .content [data-content="options"] {
+  color: red;
+}
+
+#enmo-popup .content [data-content="info"] .logo {
   margin: 0 0 0 15px;
   width: 50px;
   height: 75px;
   display: inline-block;
 }
 
-#enmo-popup .logo * {
+#enmo-popup .content [data-content="info"] .logo * {
   fill: #002633;
 }
 
-#enmo-popup .enmo-data {
+#enmo-popup .content [data-content="info"] .enmo-data {
   color: #002633;
   padding: 0;
   list-style-type: none;
@@ -67,15 +75,15 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-#enmo-popup .enmo-data li {
+#enmo-popup .content [data-content="info"] .enmo-data li {
   padding-bottom: 10px;
 }
 
-#enmo-popup .enmo-data li:last-child {
+#enmo-popup .content [data-content="info"] .enmo-data li:last-child {
   padding-bottom: 0px;
 }
 
-#enmo-popup .enmo-data .key {
+#enmo-popup .content [data-content="info"] .enmo-data .key {
   font-size: 14px;
   font-weight: bold;
   color: #002633;
