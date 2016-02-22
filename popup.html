@@ -1,24 +1,43 @@
 <html>
 <head>
     <link href="styles/popup.css" rel="stylesheet" type="text/css">
+    <link href="styles/popup_info.css" rel="stylesheet" type="text/css">
+    <link href="styles/popup_options.css" rel="stylesheet" type="text/css">
+    <link href="styles/popup_onoffswitch.css" rel="stylesheet" type="text/css">
     <script src="scripts/popup.js" type="text/javascript"></script>
 </head>
 <body>
   <div id="enmo-popup">
     <ul class="menu">
-      <li class="active" data-menu="info">Info</li>
-      <li data-menu="options">Options</li>
+      <li data-menu="info">Info</li>
+      <li class="active" data-menu="options">Options</li>
     </ul>
     <hr>
     <div class="content">
       <!------------------------- OPTIONS TAB --------------->
-      <div data-content="options" class="hide">
-        #Options
+      <div data-content="options">
+        <ul class="options">
+          <li class="dialog">
+            <div class="item">Dialogue Box</div>
+            <div class="value">
+              <div class="onoffswitch">
+                <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked>
+                <label class="onoffswitch-label" for="myonoffswitch"></label>
+              </div>
+            </div>
+          </li>
+          <li class="icon-select">
+            <div class="item">Extension Icon</div>
+            <div class="value">
+              <span class="icon selected"><img src="images/icon-active.png"></span>
+              <span class="icon"><img src="images/icon2-active.png"></span>
+            </div>
+          </li>
       </div>
       <!------------------- ^^ OPTIONS TAB ^^ --------------->
 
       <!------------------------- INFO TAB --------------->
-      <div data-content="info">
+      <div data-content="info" class="hide">
         <div class="logo">
           <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
              width="100%" height="100%" viewBox="0 0 19 18.963" enable-background="new 0 0 19 18.963" xml:space="preserve">

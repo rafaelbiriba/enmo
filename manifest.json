@@ -11,7 +11,7 @@
     "default_popup": "popup.html"
   },
 
-  "web_accessible_resources": ["images/logo-text.svg", "images/close-icon.svg", "scripts/popup.js"],
+  "web_accessible_resources": ["images/icon-active.png", "images/icon2-active.png", "images/close-icon.svg", "scripts/popup.js"],
 
   "permissions": [
     "storage"
@@ -28,7 +28,7 @@
  "background":
   {
     "scripts":["scripts/background.js"],
-    "css" : ["styles/popup.css"],
+    "css" : ["styles/popup.css", "styles/popup_info.css", "styles/popup_options.css", "styles/popup_onoffswitch.css"],
     "persistent": true
   }
 }

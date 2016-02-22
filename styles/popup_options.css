@@ -1,0 +1,52 @@
+#enmo-popup .content [data-content="options"] {
+  margin-left: 15px;
+}
+
+#enmo-popup .content [data-content="options"] .options {
+  color: red;
+  padding: 0;
+  list-style-type: none;
+  margin: 0;
+}
+
+#enmo-popup .content [data-content="options"] .options li {
+  padding-bottom: 25px;
+}
+
+#enmo-popup .content [data-content="options"] .options .item {
+  display: inline-block;
+  font-size: 14px;
+  color: #002633;
+}
+
+#enmo-popup .content [data-content="options"] .options .dialog .value {
+  display: inline-block;
+  margin-left: 38px;
+}
+
+#enmo-popup .content [data-content="options"] .options .dialog .value .onoffswitch {
+  top: 4px;
+}
+
+#enmo-popup .content [data-content="options"] .options .icon-select .value {
+  padding-top: 10px;
+}
+
+#enmo-popup .content [data-content="options"] .options .icon-select .value .icon {
+  border: 1px #828282 solid;
+  border-radius: 22px;
+  height: 37px;
+  display: inline-block;
+  width: 39px;
+  text-align: center;
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+#enmo-popup .content [data-content="options"] .options .icon-select .value .icon.selected {
+  border: 3px #002633 solid;
+}
+
+#enmo-popup .content [data-content="options"] .options .icon-select .value .icon img {
+  padding-top: 6px;
+}
