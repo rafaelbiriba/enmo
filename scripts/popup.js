@@ -10,12 +10,19 @@ chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
 
 function createInfoContent() {
   var enMoData = document.querySelector(".enmo-data");
-  for (var key in enmo_params) {
+  if(isEnMoActive()) {
+    for (var key in enmo_params) {
+      var info = document.createElement("li");
+      info.innerHTML += "<div class='key'>" + key.toUpperCase() + "</div>";
+      info.innerHTML += "<div class='value'>" + enmo_params[key] + "</div>";
+      enMoData.appendChild(info);
+    };
+  } else {
     var info = document.createElement("li");
-    info.innerHTML += "<div class='key'>" + key.toUpperCase() + "</div>";
-    info.innerHTML += "<div class='value'>" + enmo_params[key] + "</div>";
+    info.innerHTML += "<div class='key'>EnMo not active!</div>";
+    info.innerHTML += "<div class='value'></br>See <a href='http://rafaelbiriba.github.io/enmo' target='_blank'>documentation</a> </br>for more details!</div>";
     enMoData.appendChild(info);
-  };
+  }
 }
 
 function bindMenuLinks() {
@@ -46,4 +53,8 @@ function hideAllContents() {
   for (var i = 0; i < menuListContent.length; i++) {
     menuListContent[i].className = "hide";
   }
+}
+
+function isEnMoActive() {
+  return enmo_params && Object.keys(enmo_params).length > 0;
 }
