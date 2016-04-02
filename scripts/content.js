@@ -29,6 +29,7 @@ function closeEnMoDialog() {
 function destroyEnMoDialog() {
   var dialog = document.getElementById("enmo-dialog");
   if(dialog) dialog.parentNode.removeChild(dialog);
+  chrome.runtime.sendMessage({enmo_msg_type: "reload"});
 }
 
 function startDraggabilly() {
