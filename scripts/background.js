@@ -1,7 +1,7 @@
 var enmo_params = {};
 
 chrome.runtime.onMessage.addListener(function(msg, sender, sendResponse) {
-  switch(msg.enmo_type) {
+  switch(msg.enmo_msg_type) {
       case "setActive":
         chrome.browserAction.setIcon({
             tabId: sender.tab.id,
@@ -9,8 +9,9 @@ chrome.runtime.onMessage.addListener(function(msg, sender, sendResponse) {
         });
         enmo_params[sender.tab.id] = msg.enmo_params;
         break;
+
       case "getActive":
         sendResponse(enmo_params[msg.tab_id]);
         break;
-  }
+}
 });

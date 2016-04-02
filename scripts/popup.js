@@ -1,12 +1,28 @@
 var enmo_params = {};
 
 chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-    chrome.runtime.sendMessage({enmo_type: "getActive", tab_id: tabs[0].id}, function(params) {
+    chrome.runtime.sendMessage({enmo_msg_type: "getActive", tab_id: tabs[0].id}, function(params) {
       enmo_params = params;
       createInfoContent();
+      updateOptionsContent();
       bindMenuLinks();
+      bindOptionsButtons();
     });
 });
+
+chrome.storage.onChanged.addListener(function (changes,areaName) {
+    console.log("popup - New item in storage", changes, areaName);
+});
+
+function updateOptionsContent() {
+  chrome.storage.local.get("dialogBoxEnabled", function (params) {
+    console.log("update", params);
+    if(params && 'dialogBoxEnabled' in params){
+      var switchInput = document.getElementById("myonoffswitch");
+      switchInput.checked = params.dialogBoxEnabled;
+    }
+  });
+}
 
 function createInfoContent() {
   var enMoData = document.querySelector(".enmo-data");
@@ -30,6 +46,17 @@ function bindMenuLinks() {
   for (var i = 0; i < menuItem.length; i++) {
     menuItem[i].addEventListener("click", enMoChangeActiveTab);
   }
+}
+
+function bindOptionsButtons() {
+  bindSwitchInput();
+}
+
+function bindSwitchInput() {
+  var switchInput = document.getElementById("myonoffswitch");
+  switchInput.addEventListener("change", function() {
+    chrome.storage.local.set({"dialogBoxEnabled": switchInput.checked});
+  });
 }
 
 function enMoChangeActiveTab(event) {
