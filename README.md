@@ -9,7 +9,7 @@ For example, with this extension, you will be able to see quickly what is the ve
 ## Work in Progress Detailed ##
 Please, **STAR** and **WATCH** the project to get update about new progress and releases
 
-Supporting “enmo:project”, “enmo:version” and any custom tag like “enmo:custom:env”
+Supporting "enmo:track:track_name" (Example: "enmo:track:version", "enmo:track:environment")
 
 
 ## Contributors

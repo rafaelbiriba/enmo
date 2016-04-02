@@ -64,14 +64,9 @@ function getEnMoParams() {
       var meta_tag_key = metas[i].getAttribute("property");
       var meta_tag_value = metas[i].getAttribute("content");
 
-      if (["enmo:project", "enmo:version"].includes(meta_tag_key)) {
-        var key = meta_tag_key.match(new RegExp("enmo:(.*)"))[1];
-        params[key] = meta_tag_value;
-      }
-
-      var enmo_custom = "enmo:custom:"
-      if (new RegExp(enmo_custom).test(meta_tag_key)) {
-        var custom_key = meta_tag_key.match(new RegExp(enmo_custom + "(.*)"))[1];
+      var enmo_track = "enmo:track:"
+      if (new RegExp(enmo_track).test(meta_tag_key)) {
+        var custom_key = meta_tag_key.match(new RegExp(enmo_track + "(.*)"))[1];
         params[custom_key] = meta_tag_value;
       }
     }
