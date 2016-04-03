@@ -1,13 +1,18 @@
 
 var enmo_params = getEnMoParams();
 
-if (isEnMoActive()) {
-  chrome.runtime.sendMessage({enmo_params: enmo_params, enmo_msg_type: "setActive"});
-  buildEnMoDialog();
+function loadEnMoDialog() {
+  if (isEnMoActive()) {
+    chrome.runtime.sendMessage({enmo_params: enmo_params, enmo_msg_type: "setActive"});
+    buildEnMoDialog();
+  }
 }
 
+loadEnMoDialog();
+
 chrome.storage.onChanged.addListener(function (changes,areaName) {
-  if('dialogBoxEnabled' in changes) buildEnMoDialog();
+  if('dialogBoxEnabled' in changes) loadEnMoDialog();
+  if('selectedIconPrefix' in changes) loadEnMoDialog();
 });
 
 function buildEnMoDialog() {

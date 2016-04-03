@@ -1,14 +1,22 @@
 var enmo_params = {};
 var icon_path = "iconLogo";
 
-function loadSelectedIcon() {
-  chrome.storage.local.get("selectedIconPrefix", function (params) {
-    if(params && params.selectedIconPrefix) {
-      icon_path = params.selectedIconPrefix;
-      chrome.browserAction.setIcon({
-          path: "images/" + icon_path + "-inactive.png"
-      });
-    }
+function loadSelectedIcon(icon_prefix) {
+  if(icon_prefix === undefined) {
+    chrome.storage.local.get("selectedIconPrefix", function (params) {
+      if(params && params.selectedIconPrefix) {
+        icon_path = params.selectedIconPrefix;
+        setDefaultIcon();
+      }
+    });
+  } else {
+    setDefaultIcon();
+  }
+}
+
+function setDefaultIcon() {
+  chrome.browserAction.setIcon({
+      path: "images/" + icon_path + "-inactive.png"
   });
 }
 
@@ -29,8 +37,11 @@ chrome.runtime.onMessage.addListener(function(msg, sender, sendResponse) {
         break;
 
       case "changeIcon":
-        loadSelectedIcon();
-        sendResponse({});
+        icon_path = msg.enmo_new_icon_prefix;
+        chrome.storage.local.set({"selectedIconPrefix": icon_path}, function(){
+          loadSelectedIcon(icon_path);
+          sendResponse({});
+        });
         break;
 }
 });

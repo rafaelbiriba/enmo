@@ -16,10 +16,15 @@ chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
 
 function updateOptionsContent() {
   chrome.storage.local.get("dialogBoxEnabled", function (params) {
-    console.log("update", params);
     if(params && 'dialogBoxEnabled' in params){
       var switchInput = document.getElementById("myonoffswitch");
       switchInput.checked = params.dialogBoxEnabled;
+    }
+  });
+
+  chrome.storage.local.get("selectedIconPrefix", function (params) {
+    if(params && 'selectedIconPrefix' in params){
+      highlightIconSelection(params.selectedIconPrefix);
     }
   });
 }
@@ -64,21 +69,21 @@ function bindIconSelection() {
   var icons = document.querySelectorAll("#enmo-popup .content .options .icon-select .icon img");
   for (var i = 0; i < icons.length; i++) {
     icons[i].addEventListener("click", function(event){
-      removeHighlightIconSelection();
       var iconElement = event.target.parentNode;
       var iconPrefix = iconElement.dataset.icon;
-      iconElement.className += " selected"
-      chrome.storage.local.set({"selectedIconPrefix": iconPrefix}, function(){
-        chrome.runtime.sendMessage({enmo_msg_type: "changeIcon"});
-      });
+      highlightIconSelection(iconPrefix)
+      chrome.runtime.sendMessage({enmo_msg_type: "changeIcon", enmo_new_icon_prefix: iconPrefix});
     });
   }
 }
 
-function removeHighlightIconSelection() {
-  var menuList = document.querySelectorAll("#enmo-popup .content .options .icon-select .icon");
-  for (var i = 0; i < menuList.length; i++) {
-    menuList[i].className = "icon";
+function highlightIconSelection(icon) {
+  var iconList = document.querySelectorAll("#enmo-popup .content .options .icon-select .icon");
+  for (var i = 0; i < iconList.length; i++) {
+    iconList[i].className = "icon";
+    if(iconList[i].dataset.icon == icon) {
+      iconList[i].className += " selected";
+    }
   }
 }
 
